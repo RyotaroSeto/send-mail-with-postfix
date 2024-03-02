@@ -4,7 +4,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    # image: docker-ubuntu-postfix-example-image:latest
     volumes:
       - type: bind
         source: ./configs/main.cf
