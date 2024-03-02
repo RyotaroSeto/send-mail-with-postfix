@@ -1,0 +1,15 @@
+image:
+  repository: app
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+deployment:
+  replicaCount: 1
+
+  resources:
+    requests:
+      cpu: 200m
+      memory: 200Mi
+    limits:
+      cpu: 400m
+      memory: 800Mi
