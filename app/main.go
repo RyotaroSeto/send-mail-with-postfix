@@ -7,18 +7,16 @@ import (
 
 func main() {
 	// SMTPサーバーの設定
-	// smtpHost := "127.0.0.1"
 	smtpHost := "smtp.gmail.com"
 	smtpPort := "587"
-	// smtpUsername := "username" // ご利用のSMTPサーバーの認証ユーザー名
-	// smtpPassword := "password" // ご利用のSMTPサーバーの認証パスワード
-	// auth := smtp.PlainAuth("", smtpUsername, smtpPassword, smtpHost)
-	auth := smtp.PlainAuth("", "myusername", "mypassword", smtpHost)
+	smtpUsername := "myusername"
+	smtpPassword := "mypassword"
+	auth := smtp.PlainAuth("", smtpUsername, smtpPassword, smtpHost)
 
 	// メールの内容
 	from := "from@example.com"
-	to := []string{"to@gmail.com"}
-	msg := []byte("To: to@gmail.com\r\n" +
+	to := []string{"example@gmail.com"}
+	msg := []byte("To: example@gmail.com\r\n" +
 		"Subject: Test email\r\n" +
 		"\r\n" +
 		"This is a test email.")
