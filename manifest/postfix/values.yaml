@@ -1,11 +1,9 @@
 image:
-  repository: app
+  repository: postfix
   pullPolicy: IfNotPresent
   tag: "latest"
 
-deployment:
-  replicaCount: 1
-
+daemonset:
   resources:
     requests:
       cpu: 200m
@@ -13,3 +11,4 @@ deployment:
     limits:
       cpu: 400m
       memory: 800Mi
+  containerPort: 587
