@@ -17,5 +17,6 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
+      target: dev
     depends_on:
       - postfix
