@@ -12,10 +12,10 @@ services:
       - type: bind
         source: ./configs/sasl_passwd
         target: /etc/postfix/sasl_passwd
-  # app:
-  #   container_name: app
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - postfix
+  app:
+    container_name: app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    depends_on:
+      - postfix
