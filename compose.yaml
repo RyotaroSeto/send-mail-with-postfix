@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: docker-ubuntu-postfix-example-image:latest
+    # image: docker-ubuntu-postfix-example-image:latest
     volumes:
       - type: bind
         source: ./configs/main.cf
@@ -12,6 +12,7 @@ services:
       - type: bind
         source: ./configs/sasl_passwd
         target: /etc/postfix/sasl_passwd
+
   app:
     container_name: app
     build:
