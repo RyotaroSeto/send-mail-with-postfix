@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ include "postfix.fullname" . }}-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "postfix.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "postfix.fullname" . }}
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: {{ include "postfix.fullname" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- with .Values.daemonset.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          ports:
+            - containerPort: {{ .Values.daemonset.containerPort }}
+              protocol: TCP
+          volumeMounts:
+            - name: postfix-config
+              mountPath: /etc/postfix/main.cf
+              subPath: main.cf
+      volumes:
+        - name: postfix-config
+          configMap:
+            name: {{ include "postfix.fullname" . }}
+            items:
+              - key: main.cf
+                path: main.cf
+                mode: 0644

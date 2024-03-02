@@ -35,6 +35,11 @@ World
 $ docker build -t app:latest --target prod ./app
 ```
 
+### Postfixビルド
+```bash
+$ docker build -t postfix:latest .
+```
+
 ### kind立ち上げ
 ```bash
 $ kind create cluster --config=./manifest/kind.yaml
@@ -44,4 +49,5 @@ $ kind create cluster --config=./manifest/kind.yaml
 ### クラスター内のノードにDockerイメージをロード
 ```bash
 $ kind load docker-image app:latest
+$ kind load docker-image postfix:latest
 ```
