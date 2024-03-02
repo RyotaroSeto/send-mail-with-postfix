@@ -9,8 +9,8 @@ func main() {
 	// SMTPサーバーの設定
 	smtpHost := "smtp.gmail.com"
 	smtpPort := "587"
-	smtpUsername := "myusername"
-	smtpPassword := "mypassword"
+	smtpUsername := "gmailアカウント"
+	smtpPassword := "gmailのアプリパスワード"
 	auth := smtp.PlainAuth("", smtpUsername, smtpPassword, smtpHost)
 
 	// メールの内容
