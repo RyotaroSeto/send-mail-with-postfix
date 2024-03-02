@@ -17,8 +17,8 @@ func main() {
 
 	// メールの内容
 	from := "from@example.com"
-	to := []string{"hahahahawaiwai321@gmail.com"}
-	msg := []byte("To: hahahahawaiwai321@gmail.com\r\n" +
+	to := []string{"to@gmail.com"}
+	msg := []byte("To: to@gmail.com\r\n" +
 		"Subject: Test email\r\n" +
 		"\r\n" +
 		"This is a test email.")
