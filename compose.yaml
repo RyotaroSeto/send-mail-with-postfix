@@ -1,0 +1,21 @@
+services:
+  postfix:
+    container_name: postfix
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: docker-ubuntu-postfix-example-image:latest
+    volumes:
+      - type: bind
+        source: ./configs/main.cf
+        target: /etc/postfix/main.cf
+      - type: bind
+        source: ./configs/sasl_passwd
+        target: /etc/postfix/sasl_passwd
+  # app:
+  #   container_name: app
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - postfix
