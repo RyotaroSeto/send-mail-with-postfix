@@ -28,11 +28,21 @@ spec:
             - name: postfix-config
               mountPath: /etc/postfix/main.cf
               subPath: main.cf
+            - name: postfix-secret
+              mountPath: /etc/postfix/sasl_passwd
+              subPath: sasl_passwd
       volumes:
         - name: postfix-config
           configMap:
-            name: {{ include "postfix.fullname" . }}
+            name: {{ include "postfix.fullname" . }}-configmap
             items:
               - key: main.cf
                 path: main.cf
                 mode: 0644
+        - name: postfix-secret
+            secret:
+                secretName: {{ include "postfix.fullname" . }}-secret
+                items:
+                - key: sasl_passwd
+                    path: sasl_passwd
+                    mode: 0600
