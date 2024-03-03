@@ -51,3 +51,14 @@ $ kind create cluster --config=./manifest/kind.yaml
 $ kind load docker-image app:latest
 $ kind load docker-image postfix:latest
 ```
+
+### sasl_passwdシークレットをbase64エンコード
+```bash
+$ echo -n "smtp.gmail.com:587 gmailアカウント:gmailのアプリパスワード" | base64
+```
+
+### アプリケーション実行
+```bash
+$ helm install postfix ./manifest/postfix
+$ helm install app ./manifest/app
+```
